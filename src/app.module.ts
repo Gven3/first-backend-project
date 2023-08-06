@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './typeorm/entities/User';
 import * as process from "process"
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import * as process from "process"
       entities: [User],
       synchronize: true,
     }),
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],
