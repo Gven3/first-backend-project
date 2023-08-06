@@ -9,8 +9,8 @@ import { UsersModule } from './users/users.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 3306,
+      host: '0.0.0.0',
+      port: 80,
       username: 'root',
       password: 'gioekoilia1!',
       database: 'quizdb',
