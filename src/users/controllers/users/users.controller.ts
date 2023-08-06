@@ -17,8 +17,7 @@ export class UsersController {
     }
     @Post("login")
     async login(@Body() userData: userLogin) {
-        const {email} = userData
-        const user = await this.userService.findOne({email})
+        const user = await this.userService.findOne(userData.email)
         if(!user){
             throw new BadRequestException("invalid credentials")
         }
