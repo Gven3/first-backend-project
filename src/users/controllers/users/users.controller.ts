@@ -15,7 +15,7 @@ export class UsersController {
         const hashedPassword = await bcrypt.hash(userData.password, 10);
         return this.userService.createUser({...userData, createdAt: new Date(), password: hashedPassword})
     }
-    @Get("login")
+    @Post("login")
     async login(@Body() userData: userLogin) {
         const {email} = userData
         const user = await this.userService.findOne({email})
