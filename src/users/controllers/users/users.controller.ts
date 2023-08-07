@@ -29,6 +29,7 @@ export class UsersController {
       password: hashedPassword,
     });
   }
+
   @Post('login')
   async login(
     @Body() userData: userLogin,
@@ -45,5 +46,11 @@ export class UsersController {
     response.cookie('jwt', jwt, { httpOnly: true });
     const { password, ...result } = user;
     return result;
+  }
+
+  @Post('logout')
+  async logout(@Res({ passthrough: true }) response: Response) {
+    response.clearCookie('jwt');
+    return { message: 'successfully loged out' };
   }
 }
