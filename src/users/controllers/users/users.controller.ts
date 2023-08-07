@@ -23,11 +23,13 @@ export class UsersController {
   @Post('register')
   async register(@Body() userData: CreateUserDto) {
     const hashedPassword = await bcrypt.hash(userData.password, 10);
-    return this.userService.createUser({
+    const user = await this.userService.createUser({
       ...userData,
       createdAt: new Date(),
       password: hashedPassword,
     });
+    delete user.password;
+    return user;
   }
 
   @Post('login')

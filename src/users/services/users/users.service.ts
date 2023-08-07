@@ -12,8 +12,7 @@ export class UsersService {
 
   createUser(userData: CreateUserDto) {
     const user = this.userRepository.create(userData);
-    this.userRepository.save(user);
-    return { message: 'user created successfuly' };
+    return this.userRepository.save(user);
   }
 
   async findOne(email: string): Promise<User> {
